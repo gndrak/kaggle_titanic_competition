@@ -1,0 +1,167 @@
+/kaggle/input/titanic/train.csv
+
+/kaggle/input/titanic/test.csv
+
+/kaggle/input/titanic/gender_submission.csv
+
+/opt/conda/lib/python3.7/site-packages/papermill/iorw.py:50: FutureWarning: pyarrow.HadoopFileSystem is deprecated as of 2.0.0, please use pyarrow.fs.HadoopFileSystem instead.
+
+  from pyarrow import HadoopFileSystem
+
+% of women who survived: 0.7420382165605095
+
+% of men who survived: 0.18890814558058924
+
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+
+  File "/opt/conda/lib/python3.7/site-packages/papermill/execute.py", line 122, in execute_notebook
+
+    raise_for_execution_errors(nb, output_path)
+
+  File "/opt/conda/lib/python3.7/site-packages/papermill/execute.py", line 234, in raise_for_execution_errors
+
+    raise error
+
+papermill.exceptions.PapermillExecutionError: 
+
+---------------------------------------------------------------------------
+
+Exception encountered at "In [14]":
+
+---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+<ipython-input-14-af407cda0ddd> in <module>
+
+      9 model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
+
+     10 model.fit(X, y)
+
+---> 11 predictions = model.predict(X_test)
+
+     12 
+
+     13 output = pd.DataFrame({'PassengerId': test_data.PassengerId, 'Survived': predictions})
+
+
+
+/opt/conda/lib/python3.7/site-packages/sklearn/ensemble/_forest.py in predict(self, X)
+
+    627             The predicted classes.
+
+    628         """
+
+--> 629         proba = self.predict_proba(X)
+
+    630 
+
+    631         if self.n_outputs_ == 1:
+
+
+
+/opt/conda/lib/python3.7/site-packages/sklearn/ensemble/_forest.py in predict_proba(self, X)
+
+    671         check_is_fitted(self)
+
+    672         # Check data
+
+--> 673         X = self._validate_X_predict(X)
+
+    674 
+
+    675         # Assign chunk of trees to jobs
+
+
+
+/opt/conda/lib/python3.7/site-packages/sklearn/ensemble/_forest.py in _validate_X_predict(self, X)
+
+    419         check_is_fitted(self)
+
+    420 
+
+--> 421         return self.estimators_[0]._validate_X_predict(X, check_input=True)
+
+    422 
+
+    423     @property
+
+
+
+/opt/conda/lib/python3.7/site-packages/sklearn/tree/_classes.py in _validate_X_predict(self, X, check_input)
+
+    386         """Validate X whenever one tries to predict, apply, predict_proba"""
+
+    387         if check_input:
+
+--> 388             X = check_array(X, dtype=DTYPE, accept_sparse="csr")
+
+    389             if issparse(X) and (X.indices.dtype != np.intc or
+
+    390                                 X.indptr.dtype != np.intc):
+
+
+
+/opt/conda/lib/python3.7/site-packages/sklearn/utils/validation.py in inner_f(*args, **kwargs)
+
+     70                           FutureWarning)
+
+     71         kwargs.update({k: arg for k, arg in zip(sig.parameters, args)})
+
+---> 72         return f(**kwargs)
+
+     73     return inner_f
+
+     74 
+
+
+
+/opt/conda/lib/python3.7/site-packages/sklearn/utils/validation.py in check_array(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator)
+
+    643         if force_all_finite:
+
+    644             _assert_all_finite(array,
+
+--> 645                                allow_nan=force_all_finite == 'allow-nan')
+
+    646 
+
+    647     if ensure_min_samples > 0:
+
+
+
+/opt/conda/lib/python3.7/site-packages/sklearn/utils/validation.py in _assert_all_finite(X, allow_nan, msg_dtype)
+
+     97                     msg_err.format
+
+     98                     (type_err,
+
+---> 99                      msg_dtype if msg_dtype is not None else X.dtype)
+
+    100             )
+
+    101     # for object dtype data, we only check for NaNs (GH-13254)
+
+
+
+ValueError: Input contains NaN, infinity or a value too large for dtype('float32').
+
+
+
+/opt/conda/lib/python3.7/site-packages/traitlets/traitlets.py:2561: FutureWarning: --Exporter.preprocessors=["remove_papermill_header.RemovePapermillHeader"] for containers is deprecated in traitlets 5.0. You can pass `--Exporter.preprocessors item` ... multiple times to add items to a list.
+
+  FutureWarning,
+
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+
+[NbConvertApp] Writing 42393 bytes to __notebook__.ipynb
+
+/opt/conda/lib/python3.7/site-packages/traitlets/traitlets.py:2561: FutureWarning: --Exporter.preprocessors=["nbconvert.preprocessors.ExtractOutputPreprocessor"] for containers is deprecated in traitlets 5.0. You can pass `--Exporter.preprocessors item` ... multiple times to add items to a list.
+
+  FutureWarning,
+
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+
+[NbConvertApp] Writing 309035 bytes to __results__.html
